@@ -1,0 +1,69 @@
+﻿@using SocialNetwork.Domain.Models
+@model IEnumerable<Profile>
+
+@{
+    ViewBag.Title = "Profiles";
+}
+
+<h2>Profiles</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(p => p.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.PatronymicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.Contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.Authorization.Login)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(p => p.Authorization.Password)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var p in @Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(pr => p.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.PatronymicName)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.City)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.Authorization.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.Authorization.Password)
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,44 @@
+﻿@using SocialNetwork.Domain.Models
+@model IEnumerable<SocialNetwork.Domain.Models.MessageEntity>
+
+@{
+    ViewBag.Title = "Messages";
+}
+
+<h2>Messages</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(p => p.UserFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.UserTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.DateTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var p in @Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(pr => p.UserFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.UserTo)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.DateTime)
+            </td>
+        </tr>
+    }
+</table>

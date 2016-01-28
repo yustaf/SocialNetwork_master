@@ -1,0 +1,33 @@
+﻿@using SocialNetwork.Domain.Models
+@model IEnumerable<SocialNetwork.Domain.Models.Authorization>
+
+@{
+    ViewBag.Title = "Authorizations";
+}
+
+<h2>Authorizations</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(p => p.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(p => p.Password)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var p in @Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(pr => p.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(pr => p.Password)
+            </td>
+        </tr>
+    }
+</table>
+
