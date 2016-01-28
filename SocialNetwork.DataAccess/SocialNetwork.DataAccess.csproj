@@ -94,6 +94,11 @@
     <Compile Include="Configurations\ProfileConfiguration.cs" />
     <Compile Include="Context\SocialNetworkContext.cs" />
     <Compile Include="Context\SocialNetworkManager.cs" />
+    <Compile Include="Migrations\201601280732251_test.cs" />
+    <Compile Include="Migrations\201601280732251_test.Designer.cs">
+      <DependentUpon>201601280732251_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
@@ -109,6 +114,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601280732251_test.resx">
+      <DependentUpon>201601280732251_test.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
