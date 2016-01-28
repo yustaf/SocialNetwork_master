@@ -3,6 +3,7 @@ using SocialNetwork.DataAccess.Abstract;
 using SocialNetwork.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace SocialNetwork.BuisnessLayer.DataService
 {
@@ -24,6 +25,12 @@ namespace SocialNetwork.BuisnessLayer.DataService
         public IEnumerable<Authorization> GetAuthorizations()
         {
             return _authRepository.GetAllQuery().ToList();
+        }
+
+        public void add(string Login, string Password)
+        {
+            Authorization auto = new Authorization { Login = Login, Password = Password };
+            _authRepository.Add(auto);
         }
     }
 }

@@ -8,12 +8,12 @@ namespace SocialNetwork.BuisnessLayer.Abstract
 
         IEnumerable<Profile> GetProfiles();
         
-        int GetCountFriends(int UserId);
+        int GetCountFriends(string UserId);
 
-        IEnumerable<FriendEntity> GetUserFriends(int UserId);
+        IEnumerable<FriendEntity> GetUserFriends(string UserId);
 
-        IEnumerable<MessageEntity> GetUserMessages(int UserId);
+        IEnumerable<MessageEntity> GetUserMessages(string UserId);
 
-        int GetCountMessages(int UserToId, int UserFromId);
+        int GetCountMessages(string UserToId, string UserFromId);
     }
 }

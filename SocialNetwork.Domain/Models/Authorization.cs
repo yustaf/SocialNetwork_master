@@ -10,5 +10,8 @@ namespace SocialNetwork.Domain.Models
         public string ProfileId { get; set; }
 
         public virtual Profile Profile { get; set; }
+        public Authorization()
+        {
+        }
     }
 }

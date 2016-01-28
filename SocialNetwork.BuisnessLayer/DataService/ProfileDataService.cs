@@ -26,13 +26,13 @@ namespace SocialNetwork.BuisnessLayer.DataService
             return _profileRepository.GetAllQuery().ToList();
         }
 
-        public int GetCountFriends(int UserId)
+        public int GetCountFriends(string UserId)
         {
             var user = _profileRepository.Find(p => p.Id == UserId);
             return user.Friends.Count();
         }
 
-        public IEnumerable<FriendEntity> GetUserFriends(int UserId)
+        public IEnumerable<FriendEntity> GetUserFriends(string UserId)
         {
             return _friendRepository.Filter(p => p.UserId == UserId)                
                 .Select(
@@ -42,7 +42,7 @@ namespace SocialNetwork.BuisnessLayer.DataService
                 }).ToList();
         }
 
-        public IEnumerable<MessageEntity> GetUserMessages(int UserId)
+        public IEnumerable<MessageEntity> GetUserMessages(string UserId)
         {
             return _messageRepository.Filter(p => p.UserToId == UserId)                
                 .Select(
@@ -57,7 +57,7 @@ namespace SocialNetwork.BuisnessLayer.DataService
                 }).ToList();
         }
 
-        public int GetCountMessages(int UserToId, int UserFromId)
+        public int GetCountMessages(string UserToId, string UserFromId)
         {
             var message = _messageRepository.Find(p => p.UserToId == UserToId && p.UserFromId==UserFromId);
             return message.Message.Count();
