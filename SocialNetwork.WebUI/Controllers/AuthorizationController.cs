@@ -12,9 +12,10 @@ namespace SocialNetwork.WebUI.Controllers
             _authDataService = authDataService;
         }
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View();
+            var auth = _authDataService.GetAuthorizations();
+            return View(auth);
         }
     }
 }
