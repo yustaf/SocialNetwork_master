@@ -27,10 +27,11 @@ namespace SocialNetwork.BuisnessLayer.DataService
             return _authRepository.GetAllQuery().ToList();
         }
 
-        public void add(string Login, string Password)
+        public void add(string Id, string FirstName, string LastName, string PatronymicName, DateTime birthday, string City, string Contact)
         {
-            Authorization auto = new Authorization { Login = Login, Password = Password };
-            _authRepository.Add(auto);
+            Profile prof = new Profile { Id = Id, FirstName = FirstName, LastName = LastName, PatronymicName = PatronymicName, Birthday = birthday, City = City, Contact = Contact };
+            _profileRepository.Add(prof);
+            _profileRepository.SaveChanges();
         }
     }
 }

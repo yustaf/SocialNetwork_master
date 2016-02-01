@@ -6,6 +6,8 @@ namespace SocialNetwork.Domain.Models
     public class Authorization : IdentityUser
     {
         public string Login { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string ProfileId { get; set; }
 

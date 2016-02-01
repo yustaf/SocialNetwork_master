@@ -18,7 +18,7 @@ namespace SocialNetwork.Domain.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PatronymicName { get; set; }
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
         public DateTime Birthday { get; set; }
         public string City { get; set; }
         public string Contact { get; set; }

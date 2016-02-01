@@ -9,12 +9,20 @@ using SocialNetwork.BuisnessLayer.Abstract;
 using SocialNetwork.DataAccess.Context;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-
+using System.Security.Claims;
+using Microsoft.Owin.Security;
 
 namespace SocialNetwork.WebUI.Controllers
 {
     public class RegisterController : Controller
     {
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
         private SocialNetworkManager UserManager
         {
             get
@@ -38,23 +46,24 @@ namespace SocialNetwork.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(Authorization model)
+        public async Task<ActionResult> Index(Authorization model)
         {
             if (ModelState.IsValid)
             {
-                Authorization user = new Authorization { Login = model.Login, Password = model.Password };
-                Profile profil = new Profile { FirstName = model.Profile.FirstName, LastName = model.Profile.LastName, PatronymicName = model.Profile.PatronymicName, Birthday = model.Profile.Birthday, City = model.Profile.City, Contact = model.Profile.Contact };
+                Authorization user = new Authorization {UserName = model.Login, Login = model.Login, Password = model.Password };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    _authDataService.add(user.Id, model.Profile.FirstName,  model.Profile.LastName, model.Profile.PatronymicName,model.Profile.Birthday, model.Profile.City, model.Profile.Contact);
                     return RedirectToAction("Index", "Authorization");
                 }
                 else
                 {
-                    foreach (string error in result.Errors)
+                    return RedirectToAction("Index", "Message");
+                    /*foreach (string error in result.Errors)
                     {
                         ModelState.AddModelError("", error);
-                    }
+                    }*/
                 }
             }
             return View(model);

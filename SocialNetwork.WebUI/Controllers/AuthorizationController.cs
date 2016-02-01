@@ -69,10 +69,13 @@ namespace SocialNetwork.WebUI.Controllers
             ViewBag.returnUrl = returnUrl;
             return View(model);
         }
-        public ActionResult Logout()
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut();
-            return RedirectToAction("Login");
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Authorization");
         }
     }
 }
