@@ -15,14 +15,14 @@
     }
    @grid.GetHtml(columns: grid.Columns(
  grid.Column("FirstName", format: @<text>@Html.ActionLink(
-(string)item.FirstName, "viewingUsers", "Friend",
+(string)item.FirstName, "viewingUsers", "Profile",
 new { id = item.Id }, null)</text>),
  grid.Column("LastName", format: @<text>@Html.ActionLink(
-(string)item.LastName, "viewingUsers", "Friend",
+(string)item.LastName, "viewingUsers", "Profile",
 new { id = item.Id }, null)</text>),
  grid.Column("City", format: @<text>@Html.ActionLink(
-(string)item.City, "viewingUsers", "Friend",
+(string)item.City, "viewingUsers", "Profile",
 new { id = item.Id }, null)</text>))
- )
+ 
  )
 </div>
