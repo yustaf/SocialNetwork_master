@@ -40,8 +40,6 @@ namespace SocialNetwork.WebUI.Controllers
 
         public ActionResult Index()
         {
-            /*var auth = _authDataService.GetAuthorizations();
-            return View(auth);*/
             return View();
         }
 
@@ -59,11 +57,10 @@ namespace SocialNetwork.WebUI.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Message");
-                    /*foreach (string error in result.Errors)
+                    foreach (string error in result.Errors)
                     {
                         ModelState.AddModelError("", error);
-                    }*/
+                    }
                 }
             }
             return View(model);

@@ -15,5 +15,6 @@ namespace SocialNetwork.BuisnessLayer.Abstract
         IEnumerable<MessageEntity> GetUserMessages(string UserId);
 
         int GetCountMessages(string UserToId, string UserFromId);
+        void DeleteAllUsers();
     }
 }

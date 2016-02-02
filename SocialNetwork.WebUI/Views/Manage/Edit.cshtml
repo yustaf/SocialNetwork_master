@@ -1,0 +1,42 @@
+﻿@model SocialNetwork.Domain.Models.Profile
+@{
+    Layout = "~/Views/Shared/_Navigation.cshtml";
+}
+
+<div>
+    <script type="text/javascript">
+        function ChangeProfile(data) {
+            alert(data.resulMessage);
+        }
+    </script>
+
+    @using (Ajax.BeginForm("ChangeInfoProfile", new AjaxOptions
+    {
+        Url = Url.Action("ChangeInfoProfileAjax"),
+        OnSuccess = "ChangeProfile",
+        HttpMethod = "POST"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("",new { @class = "text-danger"})
+        <div>
+            <p>FirstName : @Html.EditorFor(model => model.FirstName)</p>
+        </div>
+        <div>
+            <p>LastName : @Html.EditorFor(model => model.LastName)</p>
+        </div>
+        <div>
+            <p>PatronymicName : @Html.EditorFor(model => model.PatronymicName)</p>
+        </div>
+        <div>
+            <p>Birthday : @Html.EditorFor(model => model.Birthday)</p>
+        </div>
+        <div>
+            <p>City : @Html.EditorFor(model => model.City)</p>
+        </div>
+        <div>
+            <p>Contact : @Html.EditorFor(model => model.Contact)</p>
+        </div>
+        <input type="submit" value="Сохранить"/>
+    }
+</div>

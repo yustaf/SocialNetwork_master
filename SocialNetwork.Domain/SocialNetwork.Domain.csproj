@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Authorization.cs" />
+    <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\FriendEntity.cs" />
     <Compile Include="Models\MessageEntity.cs" />
     <Compile Include="Models\Profile.cs" />

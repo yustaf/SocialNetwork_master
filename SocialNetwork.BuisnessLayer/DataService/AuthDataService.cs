@@ -29,9 +29,23 @@ namespace SocialNetwork.BuisnessLayer.DataService
 
         public void add(string Id, string FirstName, string LastName, string PatronymicName, DateTime birthday, string City, string Contact)
         {
+            
             Profile prof = new Profile { Id = Id, FirstName = FirstName, LastName = LastName, PatronymicName = PatronymicName, Birthday = birthday, City = City, Contact = Contact };
             _profileRepository.Add(prof);
             _profileRepository.SaveChanges();
+        }
+
+        public Authorization GetUserAllInfo(string Id)
+        {
+            return _authRepository.FindByKey(Id);
+        }
+
+        public void DeleteAllUsers()
+        {
+            var list = _authRepository.GetAllQuery();
+            _authRepository.RemoveRange(list);
+            _authRepository.SaveChanges();
+
         }
     }
 }

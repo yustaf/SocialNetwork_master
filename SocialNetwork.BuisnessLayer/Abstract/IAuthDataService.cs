@@ -9,5 +9,7 @@ namespace SocialNetwork.BuisnessLayer.Abstract
         IEnumerable<Authorization> GetAuthorizations();
 
         void add(string Id, string FirstName, string LastName, string PatronymicName, DateTime birthday, string City, string Contact);
+        Authorization GetUserAllInfo(string Id);
+        void DeleteAllUsers();
     }
 }

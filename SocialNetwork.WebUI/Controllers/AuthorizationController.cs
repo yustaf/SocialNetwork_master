@@ -15,11 +15,15 @@ namespace SocialNetwork.WebUI.Controllers
     public class AuthorizationController : Controller
     {
         private readonly IAuthDataService _authDataService;
+        private readonly IProfileDataService _profileDataService;
 
-        public AuthorizationController(IAuthDataService authDataService)
+
+        public AuthorizationController(IAuthDataService authDataService, IProfileDataService profileDataService)
         {
             _authDataService = authDataService;
+            _profileDataService = profileDataService;
         }
+
         private SocialNetworkManager UserManager
         {
             get
@@ -45,6 +49,7 @@ namespace SocialNetwork.WebUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(Authorization model, string returnUrl)
         {
+
             if (ModelState.IsValid)
             {
                 Authorization user = await UserManager.FindAsync(model.Login, model.Password);

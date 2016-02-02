@@ -1,13 +1,14 @@
-﻿@{
-    ViewBag.Title = "Index";
-}
+﻿
 @{
     Layout = "~/Views/Shared/_Navigation.cshtml";
 }
+@model SocialNetwork.Domain.Models.Authorization
 
-<div class="content-wrapper">
-    <hgroup class="title">
-        <h2>@ViewBag.Message</h2>
-    </hgroup>
-</div>
 
+<div>@Model.UserName</div>
+<div>@Model.Profile.FirstName</div>
+<div>@Model.Profile.LastName</div>
+<div>@Model.Profile.PatronymicName</div>
+<div>@Model.Profile.Birthday</div>
+<div>@Model.Profile.City</div>
+<div>@Model.Profile.Contact</div>

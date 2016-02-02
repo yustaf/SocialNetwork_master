@@ -3,6 +3,7 @@ using SocialNetwork.DataAccess.Abstract;
 using SocialNetwork.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace SocialNetwork.BuisnessLayer.DataService
 {
@@ -61,6 +62,13 @@ namespace SocialNetwork.BuisnessLayer.DataService
         {
             var message = _messageRepository.Find(p => p.UserToId == UserToId && p.UserFromId==UserFromId);
             return message.Message.Count();
+        }
+
+        public void DeleteAllUsers()
+        {
+            var list = _profileRepository.GetAllQuery();
+            _profileRepository.RemoveRange(list);
+            _profileRepository.SaveChanges();
         }
     }
 }

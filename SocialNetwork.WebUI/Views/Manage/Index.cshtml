@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Navigation.cshtml";
+}
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Изменение параметров учетной записи</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Пароль:</dt>
+        <dd>
+            [@Html.ActionLink("Смена пароля", "ChangePassword")]
+        </dd>
+        <dt>Пароль:</dt>
+        <dd>
+            [@Html.ActionLink("Изменение личных данных", "ChangeInfoProfile")]
+        </dd>
+
+    </dl>
+</div>
