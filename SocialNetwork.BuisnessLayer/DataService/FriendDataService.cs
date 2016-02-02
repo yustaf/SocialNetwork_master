@@ -3,6 +3,7 @@ using SocialNetwork.DataAccess.Abstract;
 using SocialNetwork.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace SocialNetwork.BuisnessLayer.DataService
 {
@@ -24,6 +25,13 @@ namespace SocialNetwork.BuisnessLayer.DataService
         public IEnumerable<FriendEntity> GetAllFriends()
         {
             return _friendRepository.GetAllQuery().ToList();
+        }
+
+        public void AddFriend(string UserId, string FriendId)
+        {
+            FriendEntity addfriend = new FriendEntity { Id = UserId, UserId = FriendId, FriendId = FriendId, DateCreated = DateTime.Today };
+            _friendRepository.Add(addfriend);
+            _friendRepository.SaveChanges();
         }
     }
 }

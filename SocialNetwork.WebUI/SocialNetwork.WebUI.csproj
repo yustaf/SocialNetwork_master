@@ -212,7 +212,10 @@
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Profile\viewingUsers.cshtml" />
+    <Content Include="Views\Friend\AddFriend.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\ChangeInfoProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

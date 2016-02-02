@@ -70,5 +70,10 @@ namespace SocialNetwork.BuisnessLayer.DataService
             _profileRepository.RemoveRange(list);
             _profileRepository.SaveChanges();
         }
+
+        public Profile GetUserAllInfo(string Id)
+        {
+            return _profileRepository.FindByKey(Id);
+        }
     }
 }

@@ -18,7 +18,7 @@
     }))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary("",new { @class = "text-danger"})
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div>
             <p>FirstName : @Html.EditorFor(model => model.FirstName)</p>
         </div>
@@ -37,6 +37,6 @@
         <div>
             <p>Contact : @Html.EditorFor(model => model.Contact)</p>
         </div>
-        <input type="submit" value="Сохранить"/>
+        <input type="submit" value="Сохранить" />
     }
 </div>

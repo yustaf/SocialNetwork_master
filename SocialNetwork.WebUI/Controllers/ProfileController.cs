@@ -1,12 +1,22 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using SocialNetwork.DataAccess.Context;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using SocialNetwork.BuisnessLayer.Abstract;
+using System.Threading.Tasks;
+using SocialNetwork.Domain.Models;
 
 namespace SocialNetwork.WebUI.Controllers
 {
     public class ProfileController : Controller
     {
         private readonly IProfileDataService _profileDataService;
-       
+
         public ProfileController(IProfileDataService profileDataService)
         {
             _profileDataService = profileDataService;
@@ -15,7 +25,12 @@ namespace SocialNetwork.WebUI.Controllers
         public ViewResult Index()
         {
             var user = _profileDataService.GetProfiles();
-            return View(user);                     
+            return View(user);
         }
+        public ActionResult viewingUsers(string Id)
+        {
+            return View(_profileDataService.GetUserAllInfo(Id));
+        }
+
     }
 }

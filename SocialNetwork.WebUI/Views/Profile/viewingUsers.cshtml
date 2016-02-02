@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model SocialNetwork.Domain.Models.Profile
+
+<div>@Model.FirstName</div>
+<div>@Model.LastName</div>
+<div>@Model.PatronymicName</div>
+<div>@Model.Birthday</div>
+<div>@Model.City</div>
+<div>@Model.Contact</div>
+
+
+@Html.ActionLink(
+"Добавить в друзья", "AddFriend", "Friend",
+new { id = Model.Id}, null)
