@@ -31,6 +31,21 @@ namespace SocialNetwork.WebUI.Controllers
         {
             return View(_profileDataService.GetUserAllInfo(Id));
         }
+        public ViewResult ProfileSearch()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ProfileSearch(string name)
+        {
+            var AllProfile = _profileDataService.Search(name);
+            if (AllProfile.Count() <= 0)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(AllProfile);
+        }
 
     }
 }

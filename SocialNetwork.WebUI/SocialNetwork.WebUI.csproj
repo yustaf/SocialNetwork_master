@@ -216,6 +216,8 @@
     <Content Include="Views\Friend\AddFriend.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\ChangeInfoProfile.cshtml" />
+    <Content Include="Views\Profile\ProfileSearch.cshtml" />
+    <Content Include="Views\Profile\Searchresults.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

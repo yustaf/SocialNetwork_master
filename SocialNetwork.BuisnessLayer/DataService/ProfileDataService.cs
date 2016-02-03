@@ -78,7 +78,17 @@ namespace SocialNetwork.BuisnessLayer.DataService
 
         public IEnumerable<Profile> Search(string Name)
         {
-            throw new NotImplementedException();
+            var ProfileList = _profileRepository.GetAll();
+            var SearchList = new List<Profile>();
+            foreach (var profile in ProfileList)
+            {
+                if (profile.FirstName == Name || profile.LastName == Name || profile.PatronymicName == Name)
+                {
+                    SearchList.Add(profile);
+                }
+            }
+            IEnumerable<Profile> List = SearchList;
+            return List;
         }
     }
 }
