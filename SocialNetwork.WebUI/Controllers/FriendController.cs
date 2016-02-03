@@ -44,5 +44,11 @@ namespace SocialNetwork.WebUI.Controllers
             _friendDataService.AddFriend(User.Identity.GetUserId(), Id);
             return View();
         }
+
+        public ViewResult MyFollowers()
+        {
+            var FollowersList = _friendDataService.GetMyFollowers(User.Identity.GetUserId());
+            return View(FollowersList);
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace SocialNetwork.WebUI.Controllers
         {
             return View(_profileDataService.GetUserAllInfo(Id));
         }
-        public ViewResult ProfileSearch()
+        public ViewResult Search()
         {
             return View();
         }

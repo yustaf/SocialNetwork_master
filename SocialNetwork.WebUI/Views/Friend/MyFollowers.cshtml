@@ -20,7 +20,7 @@
     @{
         var grid = new WebGrid(Model, defaultSort: "FirstName");
     }
-   @grid.GetHtml(columns: grid.Columns(
+    @grid.GetHtml(columns: grid.Columns(
  grid.Column("FirstName", format: @<text>@Html.ActionLink(
 (string)item.FirstName, "viewingUsers", "Profile",
 new { id = item.Id }, null)</text>),
@@ -30,6 +30,6 @@ new { id = item.Id }, null)</text>),
  grid.Column("City", format: @<text>@Html.ActionLink(
 (string)item.City, "viewingUsers", "Profile",
 new { id = item.Id }, null)</text>))
- 
+
  )
 </div>
