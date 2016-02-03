@@ -13,9 +13,6 @@ new { id = item.Id }, null)</text>),
  grid.Column("LastName", format: @<text>@Html.ActionLink(
 (string)item.LastName, "viewingUsers", "Profile",
 new { id = item.Id }, null)</text>),
- grid.Column("Birthday", format: @<text>@Html.ActionLink(
-(string)item.Birthday, "viewingUsers", "Profile",
-new { id = item.Id }, null)</text>),
  grid.Column("City", format: @<text>@Html.ActionLink(
 (string)item.City, "viewingUsers", "Profile",
 new { id = item.Id }, null)</text>))

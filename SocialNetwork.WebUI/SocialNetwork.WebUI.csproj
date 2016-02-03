@@ -176,6 +176,8 @@
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
@@ -217,7 +219,8 @@
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\ChangeInfoProfile.cshtml" />
     <Content Include="Views\Profile\ProfileSearch.cshtml" />
-    <Content Include="Views\Profile\Searchresults.cshtml" />
+    <Content Include="Views\Profile\Search.cshtml" />
+    <Content Include="Views\Friend\MyFollowers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
