@@ -36,8 +36,8 @@ namespace SocialNetwork.WebUI.Controllers
 
         public ViewResult Index()
         {
-            var friends = _profileDataService.GetProfiles();
-            return View(friends);
+            var FriendsList = _friendDataService.GetAllFriends(User.Identity.GetUserId());
+            return View(FriendsList);
         }
         public ViewResult AddFriend(string Id)
         {

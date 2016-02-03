@@ -75,5 +75,10 @@ namespace SocialNetwork.BuisnessLayer.DataService
         {
             return _profileRepository.FindByKey(Id);
         }
+
+        public IEnumerable<Profile> Search(string Name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

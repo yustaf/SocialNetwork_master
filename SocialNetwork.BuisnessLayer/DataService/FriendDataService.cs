@@ -22,9 +22,21 @@ namespace SocialNetwork.BuisnessLayer.DataService
             _messageRepository = messageRepository;
         }
 
-        public IEnumerable<FriendEntity> GetAllFriends()
+        public IEnumerable<Profile> GetAllFriends(string Id)
         {
-            return _friendRepository.GetAllQuery().ToList();
+            var Profile = _profileRepository.FindByKey(Id);
+            IEnumerable<FriendEntity> UsersList = Profile.Friends.ToList();
+            var FriendList = new List<Profile>();
+            foreach (var frind in UsersList)
+            {
+                if(frind.FriendId == frind.UserId)
+                {                    
+                    
+                    FriendList.Add(frind.Friend);
+                }
+            }
+            IEnumerable<Profile> List = FriendList;
+            return List;
         }
 
         public void AddFriend(string UserId, string FriendId)

@@ -5,7 +5,7 @@ namespace SocialNetwork.BuisnessLayer.Abstract
 {
     public interface IFriendDataService
     {
-        IEnumerable<FriendEntity> GetAllFriends();
+        IEnumerable<Profile> GetAllFriends(string Id);
         void AddFriend(string UserId, string FriendId);
 
     }

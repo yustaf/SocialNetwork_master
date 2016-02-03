@@ -17,5 +17,6 @@ namespace SocialNetwork.BuisnessLayer.Abstract
         int GetCountMessages(string UserToId, string UserFromId);
         void DeleteAllUsers();
         Profile GetUserAllInfo(string Id);
+        IEnumerable<Profile> Search(string Name);
     }
 }
