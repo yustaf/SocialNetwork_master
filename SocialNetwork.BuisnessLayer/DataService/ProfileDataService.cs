@@ -80,6 +80,11 @@ namespace SocialNetwork.BuisnessLayer.DataService
         {
             var ProfileList = _profileRepository.GetAll();
             var SearchList = new List<Profile>();
+            IEnumerable<Profile> List;
+            if (Name == "")
+            {
+                return List = ProfileList;
+            }
             foreach (var profile in ProfileList)
             {
                 if (profile.FirstName == Name || profile.LastName == Name || profile.PatronymicName == Name)
@@ -87,8 +92,7 @@ namespace SocialNetwork.BuisnessLayer.DataService
                     SearchList.Add(profile);
                 }
             }
-            IEnumerable<Profile> List = SearchList;
-            return List;
+            return List = SearchList;
         }
     }
 }
