@@ -8,6 +8,7 @@ namespace SocialNetwork.BuisnessLayer.Abstract
         IEnumerable<Profile> GetAllFriends(string Id);
         IEnumerable<FriendEntity> MyFriendsList(string Id);
         IEnumerable<Profile> GetMyFollowers(string Id);
+        IEnumerable<Profile> GetIFollowers(string Id);
         void AddFriend(string UserId, string FriendId);
 
     }

@@ -50,5 +50,10 @@ namespace SocialNetwork.WebUI.Controllers
             var FollowersList = _friendDataService.GetMyFollowers(User.Identity.GetUserId());
             return View(FollowersList);
         }
+        public ViewResult IFollowers()
+        {
+            var FollowersList = _friendDataService.GetIFollowers(User.Identity.GetUserId());
+            return View(FollowersList);
+        }
     }
 }
