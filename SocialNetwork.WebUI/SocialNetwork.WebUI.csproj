@@ -221,6 +221,7 @@
     <Content Include="Views\Profile\ProfileSearch.cshtml" />
     <Content Include="Views\Profile\Search.cshtml" />
     <Content Include="Views\Friend\MyFollowers.cshtml" />
+    <Content Include="Views\Friend\IFollowers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

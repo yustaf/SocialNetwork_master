@@ -28,7 +28,7 @@ namespace SocialNetwork.BuisnessLayer.DataService
             var UsersList = new List<FriendEntity>();
             foreach (var friend in Friends)
             {
-                if (friend.FriendId == Id)
+                if (friend.FriendId == Id || friend.UserId == Id)
                 {
                     UsersList.Add(friend);
                 }
@@ -38,24 +38,22 @@ namespace SocialNetwork.BuisnessLayer.DataService
 
         public IEnumerable<Profile> GetAllFriends(string Id)
         {
-            
-            var FriendList = new List<Profile>();
-            IEnumerable < FriendEntity > UsersList = MyFriendsList(Id);
-            foreach (var frind in UsersList)
+            var Friends = _friendRepository.GetAll();
+            var UsersList = new List<Profile>();
+            foreach (var friend in Friends)
             {
-                if(frind.Id != "0")
-                {                    
-                    FriendList.Add(frind.Friend);
+                if (friend.UserId == Id && friend.Id == Id)
+                {
+                    UsersList.Add(friend.Friend);
                 }
             }
-            IEnumerable<Profile> List = FriendList;
+            IEnumerable<Profile> List = UsersList;
             return List;
         }
 
         public void AddFriend(string UserId, string FriendId)
         {
-            var KeyFriend = new { FriendId, UserId };
-            var Application = _friendRepository.FindByKey(KeyFriend);
+            var Application = _friendRepository.FindByKey(new object[] { FriendId, UserId });
 
             if (Application != null && Application.Id == "0")
             {
@@ -77,19 +75,32 @@ namespace SocialNetwork.BuisnessLayer.DataService
 
         public IEnumerable<Profile> GetMyFollowers(string Id)
         {
-            var FriendList = new List<Profile>();
-            IEnumerable<FriendEntity> UsersList = MyFriendsList(Id);
-            foreach (var frind in UsersList)
+            var Friends = _friendRepository.GetAll();
+            var UsersList = new List<Profile>();
+            foreach (var friend in Friends)
             {
-                if (frind.Id == "0")
+                if (friend.FriendId == Id && friend.Id == "0")
                 {
-                    FriendList.Add(frind.Friend);
+                    UsersList.Add(_profileRepository.FindByKey(friend.UserId));
                 }
             }
-            IEnumerable<Profile> List = FriendList;
+            IEnumerable<Profile> List = UsersList;
             return List;
         }
 
-       
+        public IEnumerable<Profile> GetIFollowers(string Id)
+        {
+            var Friends = _friendRepository.GetAll();
+            var UsersList = new List<Profile>();
+            foreach (var friend in Friends)
+            {
+                if (friend.UserId == Id && friend.Id == "0")
+                {
+                    UsersList.Add(_profileRepository.FindByKey(friend.FriendId));
+                }
+            }
+            IEnumerable<Profile> List = UsersList;
+            return List;
+        }
     }
 }
