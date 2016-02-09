@@ -3,24 +3,36 @@ namespace SocialNetwork.DataAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class test : DbMigration
+    public partial class DataMigration : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.FriendEntity",
+                "dbo.DialogEntity",
                 c => new
                     {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        FriendId = c.String(nullable: false, maxLength: 128),
-                        Id = c.String(),
-                        DateCreated = c.DateTime(nullable: false),
+                        Id = c.String(nullable: false, maxLength: 128),
+                        UserToId = c.String(nullable: false, maxLength: 128),
+                        UserFromId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => new { t.UserId, t.FriendId })
-                .ForeignKey("dbo.Profile", t => t.FriendId)
-                .ForeignKey("dbo.Profile", t => t.UserId)
-                .Index(t => t.UserId)
-                .Index(t => t.FriendId);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Profile", t => t.UserFromId)
+                .ForeignKey("dbo.Profile", t => t.UserToId)
+                .Index(t => t.UserToId)
+                .Index(t => t.UserFromId);
+            
+            CreateTable(
+                "dbo.MessageEntity",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        DialogId = c.String(nullable: false, maxLength: 128),
+                        Message = c.String(nullable: false),
+                        DateTime = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DialogEntity", t => t.DialogId)
+                .Index(t => t.DialogId);
             
             CreateTable(
                 "dbo.Profile",
@@ -100,20 +112,19 @@ namespace SocialNetwork.DataAccess.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.MessageEntity",
+                "dbo.FriendEntity",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Message = c.String(nullable: false),
-                        DateTime = c.DateTime(nullable: false),
-                        UserToId = c.String(nullable: false, maxLength: 128),
-                        UserFromId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        FriendId = c.String(nullable: false, maxLength: 128),
+                        Id = c.String(),
+                        DateCreated = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Profile", t => t.UserFromId)
-                .ForeignKey("dbo.Profile", t => t.UserToId)
-                .Index(t => t.UserToId)
-                .Index(t => t.UserFromId);
+                .PrimaryKey(t => new { t.UserId, t.FriendId })
+                .ForeignKey("dbo.Profile", t => t.FriendId)
+                .ForeignKey("dbo.Profile", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.FriendId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -130,33 +141,36 @@ namespace SocialNetwork.DataAccess.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.MessageEntity", "UserToId", "dbo.Profile");
-            DropForeignKey("dbo.MessageEntity", "UserFromId", "dbo.Profile");
+            DropForeignKey("dbo.DialogEntity", "UserToId", "dbo.Profile");
+            DropForeignKey("dbo.DialogEntity", "UserFromId", "dbo.Profile");
             DropForeignKey("dbo.FriendEntity", "UserId", "dbo.Profile");
             DropForeignKey("dbo.FriendEntity", "FriendId", "dbo.Profile");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Profile", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.MessageEntity", "DialogId", "dbo.DialogEntity");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.MessageEntity", new[] { "UserFromId" });
-            DropIndex("dbo.MessageEntity", new[] { "UserToId" });
+            DropIndex("dbo.FriendEntity", new[] { "FriendId" });
+            DropIndex("dbo.FriendEntity", new[] { "UserId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Profile", new[] { "Id" });
-            DropIndex("dbo.FriendEntity", new[] { "FriendId" });
-            DropIndex("dbo.FriendEntity", new[] { "UserId" });
+            DropIndex("dbo.MessageEntity", new[] { "DialogId" });
+            DropIndex("dbo.DialogEntity", new[] { "UserFromId" });
+            DropIndex("dbo.DialogEntity", new[] { "UserToId" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.MessageEntity");
+            DropTable("dbo.FriendEntity");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Profile");
-            DropTable("dbo.FriendEntity");
+            DropTable("dbo.MessageEntity");
+            DropTable("dbo.DialogEntity");
         }
     }
 }

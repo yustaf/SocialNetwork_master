@@ -89,14 +89,15 @@
   <ItemGroup>
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Configurations\AuthorizationConfiguration.cs" />
+    <Compile Include="Configurations\DialogConfiguration.cs" />
     <Compile Include="Configurations\FriendConfiguration.cs" />
     <Compile Include="Configurations\MessageConfiguration.cs" />
     <Compile Include="Configurations\ProfileConfiguration.cs" />
     <Compile Include="Context\SocialNetworkContext.cs" />
     <Compile Include="Context\SocialNetworkManager.cs" />
-    <Compile Include="Migrations\201601280732251_test.cs" />
-    <Compile Include="Migrations\201601280732251_test.Designer.cs">
-      <DependentUpon>201601280732251_test.cs</DependentUpon>
+    <Compile Include="Migrations\201602091259542_DataMigration.cs" />
+    <Compile Include="Migrations\201602091259542_DataMigration.Designer.cs">
+      <DependentUpon>201602091259542_DataMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,8 +117,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601280732251_test.resx">
-      <DependentUpon>201601280732251_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602091259542_DataMigration.resx">
+      <DependentUpon>201602091259542_DataMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

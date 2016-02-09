@@ -51,10 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAuthDataService.cs" />
+    <Compile Include="Abstract\IDialogDataService.cs" />
     <Compile Include="Abstract\IFriendDataService.cs" />
     <Compile Include="Abstract\IMessageDataService.cs" />
     <Compile Include="Abstract\IProfileDataService.cs" />
     <Compile Include="DataService\AuthDataService.cs" />
+    <Compile Include="DataService\DialogDataService.cs" />
     <Compile Include="DataService\FriendDataService.cs" />
     <Compile Include="DataService\MessageDataService.cs" />
     <Compile Include="DataService\ProfileDataService.cs" />

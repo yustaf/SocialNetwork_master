@@ -3,6 +3,7 @@ using SocialNetwork.DataAccess.Abstract;
 using SocialNetwork.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace SocialNetwork.BuisnessLayer.DataService
 {
@@ -12,18 +13,37 @@ namespace SocialNetwork.BuisnessLayer.DataService
         private readonly IRepository<Profile> _profileRepository;
         private readonly IRepository<FriendEntity> _friendRepository;
         private readonly IRepository<MessageEntity> _messageRepository;
+        private readonly IRepository<DialogEntity> _dialogRepository;
 
-        public MessageDataService(IRepository<Authorization> authRepository, IRepository<Profile> profileRepository, IRepository<FriendEntity> friendRepository, IRepository<MessageEntity> messageRepository)
+        public MessageDataService(IRepository<Authorization> authRepository, IRepository<Profile> profileRepository, IRepository<FriendEntity> friendRepository, IRepository<MessageEntity> messageRepository, IRepository<DialogEntity> dialogRepository)
         {
             _authRepository = authRepository;
             _profileRepository = profileRepository;
             _friendRepository = friendRepository;
             _messageRepository = messageRepository;
+            _dialogRepository = dialogRepository;
         }
 
         public IEnumerable<MessageEntity> GetAllMessages()
         {
             return _messageRepository.GetAllQuery().ToList();
         }
+
+
+       /* public IEnumerable<MessageEntity> GetMessagesUser(string Id)
+        {
+            var MessageList = _messageRepository.GetAll();
+            var MyMessagesList = new List<MessageEntity>();
+
+            foreach (var Message in MessageList)
+            {
+                if (Message.UserFromId == Id || Message.UserFromId == Id)
+                {
+                    MyMessagesList.Add(Message);
+                }
+            }
+            IEnumerable<MessageEntity> dialog = MyMessagesList;
+            return dialog;
+        }*/
     }
 }

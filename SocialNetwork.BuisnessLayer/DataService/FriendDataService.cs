@@ -13,13 +13,15 @@ namespace SocialNetwork.BuisnessLayer.DataService
         private readonly IRepository<Profile> _profileRepository;
         private readonly IRepository<FriendEntity> _friendRepository;
         private readonly IRepository<MessageEntity> _messageRepository;
+        private readonly IRepository<DialogEntity> _dialogRepository;
 
-        public FriendDataService(IRepository<Authorization> authRepository, IRepository<Profile> profileRepository, IRepository<FriendEntity> friendRepository, IRepository<MessageEntity> messageRepository)
+        public FriendDataService(IRepository<Authorization> authRepository, IRepository<Profile> profileRepository, IRepository<FriendEntity> friendRepository, IRepository<MessageEntity> messageRepository, IRepository<DialogEntity> dialogRepository)
         {
             _authRepository = authRepository;
             _profileRepository = profileRepository;
             _friendRepository = friendRepository;
             _messageRepository = messageRepository;
+            _dialogRepository = dialogRepository;
         }
 
         public IEnumerable<FriendEntity> MyFriendsList(string Id)

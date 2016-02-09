@@ -11,9 +11,9 @@ using Microsoft.Owin;
 
 namespace SocialNetwork.DataAccess.Context
 {
-    public class SocialNetworkManager :UserManager<Authorization>
+    public class SocialNetworkManager : UserManager<Authorization>
     {
-        public SocialNetworkManager(IUserStore<Authorization> store) : base(store) 
+        public SocialNetworkManager(IUserStore<Authorization> store) : base(store)
         {
         }
         public static SocialNetworkManager Create(IdentityFactoryOptions<SocialNetworkManager> options,

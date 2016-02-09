@@ -12,7 +12,7 @@ namespace SocialNetwork.BuisnessLayer.Abstract
 
         IEnumerable<FriendEntity> GetUserFriends(string UserId);
 
-        IEnumerable<MessageEntity> GetUserMessages(string UserId);
+        IEnumerable<DialogEntity> GetUserDialog(string UserId);
 
         int GetCountMessages(string UserToId, string UserFromId);
         void DeleteAllUsers();

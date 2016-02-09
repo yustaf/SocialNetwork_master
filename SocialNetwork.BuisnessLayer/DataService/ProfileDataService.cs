@@ -13,13 +13,15 @@ namespace SocialNetwork.BuisnessLayer.DataService
         private readonly IRepository<Profile> _profileRepository;
         private readonly IRepository<FriendEntity> _friendRepository;
         private readonly IRepository<MessageEntity> _messageRepository;
-        
-        public ProfileDataService(IRepository<Authorization> authRepository, IRepository<Profile> profileRepository, IRepository<FriendEntity> friendRepository, IRepository<MessageEntity> messageRepository)
+        private readonly IRepository<DialogEntity> _dialogRepository;
+
+        public ProfileDataService(IRepository<Authorization> authRepository, IRepository<Profile> profileRepository, IRepository<FriendEntity> friendRepository, IRepository<MessageEntity> messageRepository, IRepository<DialogEntity> dialogRepository)
         {
             _authRepository = authRepository;
             _profileRepository = profileRepository;
             _friendRepository = friendRepository;
             _messageRepository = messageRepository;
+            _dialogRepository = dialogRepository;
         }
 
         public IEnumerable<Profile> GetProfiles()
@@ -43,25 +45,23 @@ namespace SocialNetwork.BuisnessLayer.DataService
                 }).ToList();
         }
 
-        public IEnumerable<MessageEntity> GetUserMessages(string UserId)
+        public IEnumerable<DialogEntity> GetUserDialog(string UserId)
         {
-            return _messageRepository.Filter(p => p.UserToId == UserId)                
+            return _dialogRepository.Filter(p => p.UserToId == UserId)                
                 .Select(
-                p => new MessageEntity()
+                p => new DialogEntity()
                 {
                     UserFromId = p.UserFromId,
                     UserFrom = p.UserFrom,
                     UserToId = p.UserToId,
-                    UserTo = p.UserTo,
-                    DateTime = p.DateTime,
-                    Message = p.Message
+                    UserTo = p.UserTo
                 }).ToList();
         }
 
         public int GetCountMessages(string UserToId, string UserFromId)
         {
-            var message = _messageRepository.Find(p => p.UserToId == UserToId && p.UserFromId==UserFromId);
-            return message.Message.Count();
+            var message = _dialogRepository.Find(p => p.UserToId == UserToId && p.UserFromId==UserFromId);
+            return message.Messages.Count();
         }
 
         public void DeleteAllUsers()

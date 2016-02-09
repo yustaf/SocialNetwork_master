@@ -6,5 +6,7 @@ namespace SocialNetwork.BuisnessLayer.Abstract
     public interface IMessageDataService
     {
         IEnumerable<MessageEntity> GetAllMessages();
+
+       // IEnumerable<MessageEntity> GetMessagesUser(string Id);
     }
 }

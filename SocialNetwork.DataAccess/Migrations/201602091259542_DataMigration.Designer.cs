@@ -7,13 +7,13 @@ namespace SocialNetwork.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class test : IMigrationMetadata
+    public sealed partial class DataMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DataMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601280732251_test"; }
+            get { return "201602091259542_DataMigration"; }
         }
         
         string IMigrationMetadata.Source

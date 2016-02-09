@@ -10,8 +10,8 @@ namespace SocialNetwork.Domain.Models
         {
             Users = new List<FriendEntity>();
             Friends = new List<FriendEntity>();
-            UsersTo = new List<MessageEntity>();
-            UsersFrom = new List<MessageEntity>();
+            UsersTo = new List<DialogEntity>();
+            UsersFrom = new List<DialogEntity>();
         }
 
         public string Id { get; set; }
@@ -26,7 +26,7 @@ namespace SocialNetwork.Domain.Models
         public virtual Authorization Authorization { get; set; }
         public virtual ICollection<FriendEntity> Users { get; set; }
         public virtual ICollection<FriendEntity> Friends { get; set; }
-        public virtual ICollection<MessageEntity> UsersTo { get; set; }
-        public virtual ICollection<MessageEntity> UsersFrom { get; set; }
+        public virtual ICollection<DialogEntity> UsersTo { get; set; }
+        public virtual ICollection<DialogEntity> UsersFrom { get; set; }
     }
 }

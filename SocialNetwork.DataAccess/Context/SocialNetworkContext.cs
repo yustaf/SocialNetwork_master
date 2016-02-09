@@ -10,6 +10,7 @@ namespace SocialNetwork.DataAccess.Context
 
         public SocialNetworkContext() : base("SocialNetworkDB") { }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<DialogEntity> Dialogs { get; set; }
         public DbSet<MessageEntity> Messages { get; set; }
         public DbSet<FriendEntity> Friends { get; set; }
 
@@ -19,6 +20,7 @@ namespace SocialNetwork.DataAccess.Context
             modelBuilder.Configurations.Add(new ProfileConfiguration());
             modelBuilder.Configurations.Add(new FriendConfiguration());
             modelBuilder.Configurations.Add(new MessageConfiguration());
+            modelBuilder.Configurations.Add(new DialogConfiguration());
             base.OnModelCreating(modelBuilder);
         }
         public static SocialNetworkContext Create()
